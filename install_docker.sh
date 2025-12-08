@@ -14,3 +14,12 @@ echo \
 sudo apt-get update -y
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+
+
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo dpkg --configure -a
+sudo apt install containerd.io=1.7.28-1~ubuntu.24.04~noble
+sudo systemctl restart containerd
+sudo systemctl restart docker
